@@ -21,12 +21,12 @@ x-midori-release:
   commit: f70a4b47bdc54c5fa94a381edb3d595ebf2fde94
 
 modules:
-  - generated-sources.json
   - name: midori
     buildsystem: simple
     build-commands:
       - bash scripts/flatpak-build-package.sh
     sources:
+      - generated-sources.json
       - type: archive
         url: https://github.com/goastian/midori-desktop/releases/download/v11.7.1/midori-11.7.1-src.tar.xz
         sha256: 0000000000000000000000000000000000000000000000000000000000000000

@@ -1,0 +1,32 @@
+app-id: org.astian.midori_browser
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+command: midori
+
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=cups
+  - --device=dri
+  - --talk-name=org.freedesktop.Notifications
+  - --filesystem=xdg-download
+  - --filesystem=~/.mozilla:create
+
+x-midori-release:
+  tag: v11.7.1
+  commit: f70a4b47bdc54c5fa94a381edb3d595ebf2fde94
+
+modules:
+  - generated-sources.json
+  - name: midori
+    buildsystem: simple
+    build-commands:
+      - bash scripts/flatpak-build-package.sh
+    sources:
+      - type: archive
+        url: https://github.com/goastian/midori-desktop/releases/download/v11.7.1/midori-11.7.1-src.tar.xz
+        sha256: 0000000000000000000000000000000000000000000000000000000000000000
